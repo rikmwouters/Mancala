@@ -49,7 +49,7 @@ public class MancalaTest {
 		currentContainer.getOwner().connectPlayers(currentContainer);
 		int chosenHole = 3;
 		currentContainer = currentContainer.stepsForward(chosenHole);
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		Assert.assertEquals(0, currentContainer.getContent());
 	}
 	
@@ -73,7 +73,7 @@ public class MancalaTest {
 		int chosenHole = 3;
 		currentContainer = currentContainer.stepsForward(chosenHole);
 		int originalContent = currentContainer.getContent();
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		
 		int[] expectedValues = {5,5,5,1,4};
 		checkNumbersOfStonesInContainers(currentContainer, expectedValues, originalContent);
@@ -87,7 +87,7 @@ public class MancalaTest {
 		currentContainer = currentContainer.stepsForward(chosenHole);
 		currentContainer.setContent(16);
 		int originalContent = currentContainer.getContent();
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		
 		int[] correctValues = {6,6,6,1,5,5,5,5,5,5,0,5,5,1,6,6,6};
 		checkNumbersOfStonesInContainers(currentContainer, correctValues, originalContent);
@@ -111,7 +111,7 @@ public class MancalaTest {
 		int chosenHole = 2;
 		currentContainer = currentContainer.stepsForward(chosenHole);
 		int originalContent = currentContainer.getContent();
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		
 		int[] correctValues = {5,5,5,0,5,0};
 		checkNumbersOfStonesInContainers(currentContainer, correctValues, originalContent);
@@ -139,7 +139,7 @@ public class MancalaTest {
 		currentContainer.getOwner().connectPlayers(currentContainer);
 		currentContainer = currentContainer.stepsForward(1);
 		Assert.assertTrue(currentContainer.getOwner().isActive());
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		
 		Assert.assertFalse(currentContainer.getOwner().isActive());
 	}
@@ -151,7 +151,7 @@ public class MancalaTest {
 		currentContainer = currentContainer.stepsForward(1);
 		currentContainer.setContent(6);
 		Assert.assertTrue(currentContainer.getOwner().isActive());
-		((Hole) currentContainer).grabAndDistribute();
+		((Hole) currentContainer).processHoleChoice();
 		
 		Assert.assertTrue(currentContainer.getOwner().isActive());
 	}

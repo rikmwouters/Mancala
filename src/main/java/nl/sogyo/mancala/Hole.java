@@ -44,7 +44,7 @@ public class Hole extends Container {
 	 * Movement methods
 	 */
 	
-	public void grabAndDistribute() {
+	public void processHoleChoice() {
 		
 		int content = getContent();
 		Container currentContainer = this;
