@@ -22,50 +22,36 @@ public class MancalaHttpServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MancalaHttpServlet() {
+    /*public MancalaHttpServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
+    }*/
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
 		
-		String resource = null;
+		/*String resource = null;
 		if ("newGame".equalsIgnoreCase(action)) {
 			resource = this.processNewGame(request);
 		} else if ("makeMove".equalsIgnoreCase(action)) {
 			resource = this.processMakeMove(request);
-		}
+		}*/
 		
-		RequestDispatcher rd = request.getRequestDispatcher("viewBoard.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("./Session.jsp");
 	    rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		doPost(request, response);
 	}
 	
-	private String processNewGame(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		String playerName = request.getParameter("name");
-		session.setAttribute("PlayerName", playerName);
-		BoardDTO boardDTO = new BoardDTO();
-	    session.setAttribute("Mancala", boardDTO.getMancalaGame());
-	    
-	    return "./viewBoard.jsp";
-	}
 	
-	private String processMakeMove(HttpServletRequest request) {
-		return null;
-	}
-
 }
