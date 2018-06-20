@@ -1,4 +1,4 @@
-package nl.sogyo.mancala;
+package nl.sogyo.mancala.domain;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;

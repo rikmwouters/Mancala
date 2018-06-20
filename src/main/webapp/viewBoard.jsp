@@ -7,7 +7,7 @@
 </head>
 <body>
 	Content per container:
-	<jsp:useBean id="allContent" class="nl.sogyo.mancala.Mancala" scope="request"/>       
+	<jsp:useBean id="allContent" class="nl.sogyo.mancala.domain.Mancala" scope="request"/>       
 	<jsp:getProperty name="firstKalaha" property="getContent()"/>
 	<jsp:getProperty name="firstKalaha.stepsForward(1)" property="getContent()"/>
 	<jsp:getProperty name="firstKalaha.stepsForward(2)" property="getContent()"/>

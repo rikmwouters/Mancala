@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import nl.sogyo.helloworld.controller.dto.HelloDTO;
+
 /**
  * Servlet implementation class MancalaHttpServlet
  */
@@ -29,13 +31,18 @@ public class MancalaHttpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Mancala mancalaGame = new Mancala();
-		HttpSession session = request.getSession();
-	    session.setAttribute("Mancala", mancalaGame);
-
-		RequestDispatcher rd = request.getRequestDispatcher("showBoard.jsp");
+		
+		String action = request.getParameter("action");
+		
+		String resource = null;
+		if ("newGame".equalsIgnoreCase(action)) {
+			resource = this.processNewGame(request);
+		} else if ("makeMove".equalsIgnoreCase(action)) {
+			resource = this.processMakeMove(request);
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("viewBoard.jsp");
 	    rd.forward(request, response);
-
 	}
 
 	/**
@@ -44,6 +51,21 @@ public class MancalaHttpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private String processNewGame(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		String playerName = request.getParameter("name");
+		session.setAttribute("PlayerName", playerName);
+		BoardDTO boardDTO = new BoardDTO();
+	    session.setAttribute("Mancala", boardDTO.getMancalaGame());
+	    
+	    return "./viewBoard.jsp";
+	}
+	
+	private void processMakeMove() {
+		
 	}
 
 }

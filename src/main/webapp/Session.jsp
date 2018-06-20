@@ -5,13 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%@page import="nl.sogyo.mancala.domain.*" %>
 </head>
 <body>
-	<jsp:useBean id="firstKalaha" class="nl.sogyo.mancala.Mancala" scope="session"/>       
-	Current Personâ€™s first name:
-	<jsp:getProperty name="firstKalaha" property="getOwner()"/> <br/>
-    Current Personâ€™s last name:
-    <jsp:getProperty name="firstKalaha" property="getContent()"/> <br/>
+	<jsp:useBean id="firstKalaha" class="nl.sogyo.mancala.domain.Mancala" scope="session"/>       
+	Current Person'€™s first name:
+	<jsp:getProperty name="Mancala.firstKalaha" property="getOwner()"/> <br/>
+    Current Person's last name:
+    <jsp:getProperty name="Mancala.firstKalaha" property="getContent()"/> <br/>
 	
 </body>
 </html>

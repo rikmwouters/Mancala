@@ -6,17 +6,16 @@
 
    <servlet>
        <servlet-name>MancalaHttpServlet</servlet-name>
-       <servlet-class>nl.sogyo.mancala.MancalaHttpServlet</servlet-class>
+       <servlet-class>nl.sogyo.mancala.controller.MancalaHttpServlet</servlet-class>
        <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
        <servlet-name>MancalaHttpServlet</servlet-name>
-       <url-pattern>/MancalaHttpServlet</url-pattern>
+       <url-pattern>*.do</url-pattern>
    </servlet-mapping>
 
    <welcome-file-list>
-       <welcome-file>index.jsp</welcome-file>
-       <welcome-file>default.jsp</welcome-file>
+       <welcome-file>index.html</welcome-file>
    </welcome-file-list>
 </web-app>

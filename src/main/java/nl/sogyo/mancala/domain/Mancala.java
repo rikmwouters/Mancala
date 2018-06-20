@@ -1,4 +1,4 @@
-package nl.sogyo.mancala;
+package nl.sogyo.mancala.domain;
 
 public class Mancala {
 	private Kalaha firstKalaha;

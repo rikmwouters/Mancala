@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+
+.container {
+		display: inline-block;
+		text-align: center;
+	  	
+		vertical-align:middle;
+		font-size: 50px;
+		color: #000000;
+        padding: 0px;
+        -webkit-border-radius: 50px;
+        margin:20px;
+    }
+    
+    .hole {
+ 		background-color: #DDDD70;
+        width: 140px;
+        height: 140px;
+        line-height: 140px;
+        -webkit-row-count: 2;
+	    -moz-row-count: 2;
+        row-count: 2;
+    }
+    
+    .kalaha {
+    	background-color: #FF7777;
+        width: 140px;
+        height: 305px;
+        line-height: 305px;
+    }
+    
+    .text {
+    	
+    }
+    
+    li:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+li:nth-child(2) {
+  top: 100px;
+  left: 0;
+}
+li:nth-child(3) {
+  top: 200px;
+  left: 0;
+}
+li:nth-child(4) {
+  top: 0;
+  left: 100px;
+}
+li:nth-child(5) {
+  top: 100px;
+  left: 100px;
+}
+li:nth-child(6) {
+  top: 200px;
+  left: 100px;
+}
