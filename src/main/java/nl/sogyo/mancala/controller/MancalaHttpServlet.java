@@ -32,7 +32,7 @@ public class MancalaHttpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String action = request.getParameter("action");
+		//String action = request.getParameter("action");
 		
 		/*String resource = null;
 		if ("newGame".equalsIgnoreCase(action)) {
