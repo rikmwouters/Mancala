@@ -4,11 +4,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<link rel="stylesheet" type="text/css" href="Style.css">
 <title>Hello</title>
 </head>
 <body>
-	<p>
-		TEST
-	</p>
+<div class="top-bar"><div>Player 1</div><div>Player 2</div></div><br>
+<div class="flex-container">
+		
+		
+		<div class="container kalaha">K</div>
+
+		<div class="holefield">
+   			<div class="container hole">H</div>
+   			<div class="container hole">H</div>
+   			<div class="container hole">H</div>
+  			<div class="container hole">H</div>
+    		<div class="container hole">H</div>
+	    	<div class="container hole">H</div>
+    	
+    		<div class="container hole">H</div>
+   			<div class="container hole">H</div>
+    		<div class="container hole">H</div>
+    		<div class="container hole">H</div>
+    		<div class="container hole">H</div>
+    		<div class="container hole">H</div>
+    	</div>
+    	<div class="container kalaha">K</div>
+		
+    </div>
+
 </body>
 </html>
