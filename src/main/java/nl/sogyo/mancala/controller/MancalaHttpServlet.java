@@ -20,6 +20,7 @@ import nl.sogyo.mancala.domain.Mancala;
 @WebServlet("/MancalaHttpServlet")
 public class MancalaHttpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BoardDTO boardDTO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,16 +43,11 @@ public class MancalaHttpServlet extends HttpServlet {
 		} else if ("makeMove".equalsIgnoreCase(action)) {
 			resource = this.processMakeMove(request);
 		}*/
+		
 		if(request.getParameter("nameP1") != null && request.getParameter("nameP2") != null) {
 			processNewGame(request);
-		} else if (request.getParameter("hole1") != null) {
-            //BoardDTO.getMancalaGame().chooseHole(1);
-        } else if (request.getParameter("hole2") != null) {
-        	//mancalaGame.chooseHole(2);
-        } else if (request.getParameter("hole3") != null) {
-        	//mancalaGame.chooseHole(3);
         } else {
-            // ???
+            processMakeMove(request);
         }
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./Session.jsp");
@@ -73,14 +69,40 @@ private String processNewGame(HttpServletRequest request) {
 		String nameP2 = request.getParameter("nameP2");
 		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2);
 		session.setAttribute("Players", playersDTO);
-		BoardDTO boardDTO = new BoardDTO();
+		boardDTO = new BoardDTO();
 	    session.setAttribute("Board", boardDTO);
 	    
 	    return "./Session.jsp";
 	}
 	
 	private String processMakeMove(HttpServletRequest request) {
-		return null;
+		
+		if (request.getParameter("hole1") != null) {
+            boardDTO.getMancalaGame().chooseHole(1);
+        } else if (request.getParameter("hole2") != null) {
+        	boardDTO.getMancalaGame().chooseHole(2);
+        } else if (request.getParameter("hole3") != null) {
+        	boardDTO.getMancalaGame().chooseHole(3);
+        } else if (request.getParameter("hole4") != null) {
+        	boardDTO.getMancalaGame().chooseHole(4);
+        } else if (request.getParameter("hole5") != null) {
+        	boardDTO.getMancalaGame().chooseHole(5);
+        } else if (request.getParameter("hole6") != null) {
+        	boardDTO.getMancalaGame().chooseHole(6);
+        } else if (request.getParameter("hole7") != null) {
+        	boardDTO.getMancalaGame().chooseHole(8);
+        } else if (request.getParameter("hole8") != null) {
+        	boardDTO.getMancalaGame().chooseHole(9);
+        } else if (request.getParameter("hole9") != null) {
+        	boardDTO.getMancalaGame().chooseHole(10);
+        } else if (request.getParameter("hole10") != null) {
+        	boardDTO.getMancalaGame().chooseHole(11);
+        } else if (request.getParameter("hole11") != null) {
+        	boardDTO.getMancalaGame().chooseHole(12);
+        } else if (request.getParameter("hole12") != null) {
+        	boardDTO.getMancalaGame().chooseHole(13);
+        }
+		return "./Session.jsp";
 	}
 	
 	

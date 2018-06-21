@@ -20,6 +20,7 @@
         opacity: 0.6;
         transition: 0.3s;
         cursor: pointer;
+        border-style: none;
     }
     
     .hole:hover { 
