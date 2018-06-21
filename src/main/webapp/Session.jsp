@@ -22,20 +22,21 @@
 
 <div class="flex-container">
 		<div class="container kalaha"><jsp:useBean id="Kalaha2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha2Content" /></div>
-		<form method="post" class="holefield">
-   			<button type="submit" name="button" value="hole12" class="container hole"><jsp:useBean id="Hole12" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole12Content" /></button>
-   			<button type="submit" name="button" value="hole11" class="container hole"><jsp:useBean id="Hole11" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole11Content" /></button>
-   			<button type="submit" name="button" value="hole10" class="container hole"><jsp:useBean id="Hole10" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole10Content" /></button>
-  			<button type="submit" name="button" value="hole9" class="container hole"><jsp:useBean id="Hole9" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole9Content" /></button>
-    		<button type="submit" name="button" value="hole8" class="container hole"><jsp:useBean id="Hole8" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole8Content" /></button>
-	    	<button type="submit" name="button" value="hole7" class="container hole"><jsp:useBean id="Hole7" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole7Content" /></button>
+		<form action="./Step.do" method="post" class="holefield">
+			<jsp:useBean id="Hole" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" />
+   			<button type="submit" name="button" value="hole12" class="container hole"><jsp:getProperty name="Board" property="hole12Content" /></button>
+   			<button type="submit" name="button" value="hole11" class="container hole"><jsp:getProperty name="Board" property="hole11Content" /></button>
+   			<button type="submit" name="button" value="hole10" class="container hole"><jsp:getProperty name="Board" property="hole10Content" /></button>
+  			<button type="submit" name="button" value="hole9" class="container hole"><jsp:getProperty name="Board" property="hole9Content" /></button>
+    		<button type="submit" name="button" value="hole8" class="container hole"><jsp:getProperty name="Board" property="hole8Content" /></button>
+	    	<button type="submit" name="button" value="hole7" class="container hole"><jsp:getProperty name="Board" property="hole7Content" /></button>
     	
-    		<button type="submit" name="button" value="hole1" class="container hole"><jsp:useBean id="Hole1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole1Content" /></button>
-   			<button type="submit" name="button" value="hole2" class="container hole"><jsp:useBean id="Hole2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole2Content" /></button>
-    		<button type="submit" name="button" value="hole3" class="container hole"><jsp:useBean id="Hole3" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole3Content" /></button>
-    		<button type="submit" name="button" value="hole4" class="container hole"><jsp:useBean id="Hole4" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole4Content" /></button>
-    		<button type="submit" name="button" value="hole5" class="container hole"><jsp:useBean id="Hole5" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole5Content" /></button>
-    		<button type="submit" name="button" value="hole6" class="container hole"><jsp:useBean id="Hole6" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole6Content" /></button>
+    		<button type="submit" name="button" value="hole1" class="container hole"><jsp:getProperty name="Board" property="hole1Content" /></button>
+   			<button type="submit" name="button" value="hole2" class="container hole"><jsp:getProperty name="Board" property="hole2Content" /></button>
+    		<button type="submit" name="button" value="hole3" class="container hole"><jsp:getProperty name="Board" property="hole3Content" /></button>
+    		<button type="submit" name="button" value="hole4" class="container hole"><jsp:getProperty name="Board" property="hole4Content" /></button>
+    		<button type="submit" name="button" value="hole5" class="container hole"><jsp:getProperty name="Board" property="hole5Content" /></button>
+    		<button type="submit" name="button" value="hole6" class="container hole"><jsp:getProperty name="Board" property="hole6Content" /></button>
     	</form>
     	<div class="container kalaha"><jsp:useBean id="Kalaha1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha1Content" /></div>
     </div>

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import nl.sogyo.mancala.controller.dto.BoardDTO;
 import nl.sogyo.mancala.controller.dto.PlayersDTO;
-import nl.sogyo.mancala.domain.Mancala;
 
 /**
  * Servlet implementation class MancalaHttpServlet
@@ -102,7 +101,7 @@ private String processNewGame(HttpServletRequest request) {
         } else if (request.getParameter("hole12") != null) {
         	boardDTO.getMancalaGame().chooseHole(13);
         }
-		return "./Session.jsp";
+		return "./NewTest.jsp";
 	}
 	
 	
