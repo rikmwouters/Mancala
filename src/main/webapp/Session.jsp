@@ -8,7 +8,18 @@
 <title>Hello</title>
 </head>
 <body>
-<div class="top-bar"><div>Player 1</div><div>Player 2</div></div><br>
+
+<div class="top-bar">
+<div>
+<jsp:useBean id="Player1" class="nl.sogyo.mancala.controller.dto.PlayersDTO" scope="session" />
+<jsp:getProperty name="Players" property="nameP1" />
+</div>
+<div>
+<jsp:useBean id="Player2" class="nl.sogyo.mancala.controller.dto.PlayersDTO" scope="session" />
+<jsp:getProperty name="Players" property="nameP2" />
+</div>
+</div><br>
+
 <div class="flex-container">
 		
 		

@@ -8,7 +8,7 @@ public class BoardDTO {
 	
 	
 	public BoardDTO(Mancala mancalaGame) {
-		
+		this.mancalaGame = mancalaGame;
 	}
 	
 	
