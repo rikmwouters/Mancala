@@ -9,6 +9,13 @@ public class PlayersDTO {
 		
 	}
 	
+	public PlayersDTO(String nameP1, String nameP2) {
+		
+		this.nameP1 = nameP1;
+		this.nameP2 = nameP2;
+	}
+	
+	
 	public String getNameP1() {
 		
 		return this.nameP1;
@@ -17,13 +24,5 @@ public class PlayersDTO {
 	public String getNameP2() {
 		
 		return this.nameP2;
-	}
-	
-	public void setNameP1(String nameP1) {
-		this.nameP1 = nameP1;
-	}
-	
-	public void setNameP2(String nameP2) {
-		this.nameP2 = nameP2;
 	}
 }

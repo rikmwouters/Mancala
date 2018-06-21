@@ -21,27 +21,23 @@
 </div><br>
 
 <div class="flex-container">
-		
-		
-		<div class="container kalaha">K</div>
-
+		<div class="container kalaha"><jsp:useBean id="Kalaha2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha2Content" /></div>
 		<div class="holefield">
-   			<div class="container hole">H</div>
-   			<div class="container hole">H</div>
-   			<div class="container hole">H</div>
-  			<div class="container hole">H</div>
-    		<div class="container hole">H</div>
-	    	<div class="container hole">H</div>
+   			<div class="container hole"><jsp:useBean id="Hole12" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole12Content" /></div>
+   			<div class="container hole"><jsp:useBean id="Hole11" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole11Content" /></div>
+   			<div class="container hole"><jsp:useBean id="Hole10" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole10Content" /></div>
+  			<div class="container hole"><jsp:useBean id="Hole9" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole9Content" /></div>
+    		<div class="container hole"><jsp:useBean id="Hole8" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole8Content" /></div>
+	    	<div class="container hole"><jsp:useBean id="Hole7" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole7Content" /></div>
     	
-    		<div class="container hole">H</div>
-   			<div class="container hole">H</div>
-    		<div class="container hole">H</div>
-    		<div class="container hole">H</div>
-    		<div class="container hole">H</div>
-    		<div class="container hole">H</div>
+    		<div class="container hole"><jsp:useBean id="Hole1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole1Content" /></div>
+   			<div class="container hole"><jsp:useBean id="Hole2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole2Content" /></div>
+    		<div class="container hole"><jsp:useBean id="Hole3" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole3Content" /></div>
+    		<div class="container hole"><jsp:useBean id="Hole4" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole4Content" /></div>
+    		<div class="container hole"><jsp:useBean id="Hole5" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole5Content" /></div>
+    		<div class="container hole"><jsp:useBean id="Hole6" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="hole6Content" /></div>
     	</div>
-    	<div class="container kalaha">K</div>
-		
+    	<div class="container kalaha"><jsp:useBean id="Kalaha1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha1Content" /></div>
     </div>
 
 </body>

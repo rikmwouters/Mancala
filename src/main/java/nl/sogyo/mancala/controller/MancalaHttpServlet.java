@@ -71,12 +71,10 @@ private String processNewGame(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String nameP1 = request.getParameter("nameP1");
 		String nameP2 = request.getParameter("nameP2");
-		PlayersDTO playersDTO = new PlayersDTO();
-		playersDTO.setNameP1(nameP1);
-		playersDTO.setNameP2(nameP2);
+		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2);
 		session.setAttribute("Players", playersDTO);
 		BoardDTO boardDTO = new BoardDTO();
-	    session.setAttribute("Mancala", boardDTO.getMancalaGame());
+	    session.setAttribute("Board", boardDTO);
 	    
 	    return "./Session.jsp";
 	}

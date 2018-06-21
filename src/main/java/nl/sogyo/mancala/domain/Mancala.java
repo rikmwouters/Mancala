@@ -23,6 +23,15 @@ public class Mancala {
 		return AllContent;
 	}
 	
+	public int findContent(int position) {
+		Container currentContainer = firstKalaha;
+		for(int i = 0; i < position; i++) {
+			currentContainer = currentContainer.getNextContainer();
+		}
+		int content = currentContainer.getContent();
+		return content;
+	}
+	
 	private Container findStartingPosition() {
 		Container currentContainer = firstKalaha;
 		while(currentContainer.getClass() != Kalaha.class || currentContainer.getOwner().isActive() == true) {
@@ -52,4 +61,6 @@ public class Mancala {
 		}
 		return activePlayer;
 	}
+	
+	
 }
