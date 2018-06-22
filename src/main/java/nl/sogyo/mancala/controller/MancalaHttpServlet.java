@@ -3,6 +3,7 @@ package nl.sogyo.mancala.controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import nl.sogyo.mancala.controller.dto.BoardDTO;
 import nl.sogyo.mancala.controller.dto.PlayersDTO;
+import nl.sogyo.mancala.domain.Mancala;
 
 /**
  * Servlet implementation class MancalaHttpServlet
@@ -19,7 +21,6 @@ import nl.sogyo.mancala.controller.dto.PlayersDTO;
 @WebServlet("/MancalaHttpServlet")
 public class MancalaHttpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardDTO boardDTO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,22 +35,16 @@ public class MancalaHttpServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//String action = request.getParameter("action");
+		String action = request.getParameter("action");
 		
-		/*String resource = null;
-		if ("newGame".equalsIgnoreCase(action)) {
+		String resource = "./Session.jsp";
+		if ("newNames".equalsIgnoreCase(action)) {
 			resource = this.processNewGame(request);
-		} else if ("makeMove".equalsIgnoreCase(action)) {
+		} else if (request.getParameter("button") != null) {
 			resource = this.processMakeMove(request);
-		}*/
+		}
 		
-		if(request.getParameter("nameP1") != null && request.getParameter("nameP2") != null) {
-			processNewGame(request);
-        } else {
-            processMakeMove(request);
-        }
-		
-		RequestDispatcher rd = request.getRequestDispatcher("./Session.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(resource);
 	    rd.forward(request, response);
 	}
 
@@ -68,40 +63,28 @@ private String processNewGame(HttpServletRequest request) {
 		String nameP2 = request.getParameter("nameP2");
 		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2);
 		session.setAttribute("Players", playersDTO);
-		boardDTO = new BoardDTO();
+		Mancala mancalaGame = new Mancala();
+		BoardDTO boardDTO = new BoardDTO(mancalaGame);
 	    session.setAttribute("Board", boardDTO);
+	    session.setAttribute("MancalaGame", mancalaGame);
 	    
 	    return "./Session.jsp";
 	}
 	
 	private String processMakeMove(HttpServletRequest request) {
 		
-		if (request.getParameter("hole1") != null) {
-            boardDTO.getMancalaGame().chooseHole(1);
-        } else if (request.getParameter("hole2") != null) {
-        	boardDTO.getMancalaGame().chooseHole(2);
-        } else if (request.getParameter("hole3") != null) {
-        	boardDTO.getMancalaGame().chooseHole(3);
-        } else if (request.getParameter("hole4") != null) {
-        	boardDTO.getMancalaGame().chooseHole(4);
-        } else if (request.getParameter("hole5") != null) {
-        	boardDTO.getMancalaGame().chooseHole(5);
-        } else if (request.getParameter("hole6") != null) {
-        	boardDTO.getMancalaGame().chooseHole(6);
-        } else if (request.getParameter("hole7") != null) {
-        	boardDTO.getMancalaGame().chooseHole(8);
-        } else if (request.getParameter("hole8") != null) {
-        	boardDTO.getMancalaGame().chooseHole(9);
-        } else if (request.getParameter("hole9") != null) {
-        	boardDTO.getMancalaGame().chooseHole(10);
-        } else if (request.getParameter("hole10") != null) {
-        	boardDTO.getMancalaGame().chooseHole(11);
-        } else if (request.getParameter("hole11") != null) {
-        	boardDTO.getMancalaGame().chooseHole(12);
-        } else if (request.getParameter("hole12") != null) {
-        	boardDTO.getMancalaGame().chooseHole(13);
-        }
-		return "./NewTest.jsp";
+		HttpSession session = request.getSession(); 
+		BoardDTO boardDTO = (BoardDTO)session.getAttribute("Board");
+		Mancala mancalaGame = (Mancala)session.getAttribute("MancalaGame");
+		
+		mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
+		
+		boardDTO = new BoardDTO(mancalaGame);
+		session.setAttribute("MancalaGame", mancalaGame);
+		session.setAttribute("Board", boardDTO);
+		
+		
+		return "./Session.jsp";
 	}
 	
 	

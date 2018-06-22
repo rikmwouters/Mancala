@@ -1,10 +1,11 @@
 package nl.sogyo.mancala.domain;
 
 public class Mancala {
-	private Kalaha firstKalaha;
+	public Kalaha firstKalaha;
 	
 	public Mancala() {
 		firstKalaha = new Kalaha(0,0,null,null);
+		firstKalaha.getOwner().connectPlayers(firstKalaha);
 	}
 	
 	public void chooseHole(int position) {

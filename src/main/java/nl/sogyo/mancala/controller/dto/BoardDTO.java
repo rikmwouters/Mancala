@@ -14,7 +14,6 @@ public class BoardDTO {
 	
 	public BoardDTO() {
 		
-		mancalaGame = new Mancala();
 	}
 	
 	
