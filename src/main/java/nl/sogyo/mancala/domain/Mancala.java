@@ -9,9 +9,11 @@ public class Mancala {
 	}
 	
 	public void chooseHole(int position) {
-		Container currentContainer = findStartingPosition();
-		currentContainer = currentContainer.stepsForward(position);
-		((Hole) currentContainer).processHoleChoice();
+		Container currentContainer = firstKalaha;
+		if(firstKalaha.getOwner().isActive() && position > 7 || firstKalaha.getOwner().getOpponent().isActive() && position < 7) {
+			currentContainer = currentContainer.stepsForward(position);
+			((Hole) currentContainer).processHoleChoice();
+		}
 	}
 	
 	public int[] getAllContent() {
@@ -31,14 +33,6 @@ public class Mancala {
 		}
 		int content = currentContainer.getContent();
 		return content;
-	}
-	
-	private Container findStartingPosition() {
-		Container currentContainer = firstKalaha;
-		while(currentContainer.getClass() != Kalaha.class || currentContainer.getOwner().isActive() == true) {
-			currentContainer = currentContainer.getNextContainer();
-		}
-		return currentContainer;
 	}
 	
 	public Player determineWinner() {
