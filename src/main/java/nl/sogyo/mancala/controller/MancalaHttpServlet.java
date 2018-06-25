@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import nl.sogyo.mancala.controller.dto.BoardDTO;
+import nl.sogyo.mancala.controller.dto.MessageDTO;
 import nl.sogyo.mancala.controller.dto.PlayersDTO;
 import nl.sogyo.mancala.domain.Mancala;
 
@@ -65,6 +66,8 @@ private String processNewGame(HttpServletRequest request) {
 		BoardDTO boardDTO = new BoardDTO(mancalaGame);
 	    session.setAttribute("Board", boardDTO);
 	    session.setAttribute("MancalaGame", mancalaGame);
+	    MessageDTO messageDTO = new MessageDTO();
+	    session.setAttribute("Message", messageDTO);
 	    
 	    return "./Session.jsp";
 	}
@@ -74,8 +77,13 @@ private String processNewGame(HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		BoardDTO boardDTO = (BoardDTO)session.getAttribute("Board");
 		Mancala mancalaGame = (Mancala)session.getAttribute("MancalaGame");
+		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
+		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
 		
 		mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
+		messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
+		session.setAttribute("Message", messageDTO);
+		
 		if(mancalaGame.determineWinner() != null) {
 			processEndGame(request, mancalaGame);
 		}
@@ -92,6 +100,9 @@ private String processNewGame(HttpServletRequest request) {
 		HttpSession session = request.getSession(); 
 		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
 		String winner = playersDTO.getPlayerNameFromObject(mancalaGame.determineWinner());
+		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
+		messageDTO.pushPlayerWinMessage(winner);
+		session.setAttribute("Message", messageDTO);
 		
 		return "./Session.jsp";
 	}

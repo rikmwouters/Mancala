@@ -36,8 +36,16 @@ public class PlayersDTO {
 			return nameP1;
 		} else if(player == mancalaGame.getPlayer2()) {
 			return nameP2;
+		} else if(player != null) {
+			//An unknown player is given in case of a stalemate and is hereby changed into a marker string
+			return "#Stalemate";
 		} else {
 			return null;
 		}
+	}
+	
+	public String getActivePlayerName() {
+		Player activePlayer = mancalaGame.getActivePlayer();
+		return this.getPlayerNameFromObject(activePlayer);
 	}
 }

@@ -5,6 +5,7 @@ public class Player {
 	private Boolean active;
 	private Player opponent;
 	private Boolean won = false;
+	private Boolean endGame = false;
 
 	public Player(Boolean active, Player opponent) {
 		this.active = active;
@@ -70,6 +71,10 @@ public class Player {
 		return won;
 	}
 	
+	public Boolean gameIsFinished() {
+		return endGame;
+	}
+	
 	/*
 	 * Checking game status and end-game methods
 	 */
@@ -80,6 +85,7 @@ public class Player {
 		}
 		int totalRowContent = ((Kalaha) currentContainer).findTotalRowContent();
 		if(totalRowContent == 0) {
+			endGame = true;
 			determineScores(currentContainer);
 		}
 	}
