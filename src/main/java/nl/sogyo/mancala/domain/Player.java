@@ -41,7 +41,9 @@ public class Player {
 		active = !active;
 		opponent.alsoChangesActive();
 		
-		if(active){checkIfGameOver(currentContainer);}
+		if(active){
+			checkIfGameOver(currentContainer);
+		}
 	}
 	
 	private void alsoChangesActive() {
@@ -62,6 +64,10 @@ public class Player {
 		}
 		
 		return rowLength;
+	}
+	
+	public Boolean hasWon() {
+		return won;
 	}
 	
 	/*
@@ -101,9 +107,5 @@ public class Player {
 			this.won = false;
 			System.out.println("It's a stalemate!");
 		}
-	}
-	
-	public Boolean hasWon() {
-		return won;
 	}
 }

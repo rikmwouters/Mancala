@@ -12,7 +12,7 @@ public class Mancala {
 		Container currentContainer = firstKalaha;
 		if(firstKalaha.getOwner().isActive() && position > 7 || firstKalaha.getOwner().getOpponent().isActive() && position < 7) {
 			currentContainer = currentContainer.stepsForward(position);
-			if(currentContainer.stepsForward(position).getContent() > 0) {
+			if(currentContainer.getContent() > 0) {
 				((Hole) currentContainer).processHoleChoice();
 			}
 		}
@@ -59,5 +59,11 @@ public class Mancala {
 		return activePlayer;
 	}
 	
+	public Player getPlayer1() {
+		return firstKalaha.getOwner().getOpponent();
+	}
 	
+	public Player getPlayer2() {
+		return firstKalaha.getOwner();
+	}
 }

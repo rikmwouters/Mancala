@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link rel="stylesheet" type="text/css" href="Style.css">
-<title>Hello</title>
+<title>The Mancala Game</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 </div><br>
 
 <div class="flex-container">
-		<div class="container kalaha"><jsp:useBean id="Kalaha2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha2Content" /></div>
+	<div class="container kalaha"><jsp:useBean id="Kalaha2" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha2Content" /></div>
 		<form action="./MakeMove.do" method="post" class="holefield">
 			<jsp:useBean id="Hole" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" />
    			<button type="submit" name="button" value="13" class="container hole"><jsp:getProperty name="Board" property="hole12Content" /></button>
@@ -38,8 +38,12 @@
     		<button type="submit" name="button" value="5" class="container hole"><jsp:getProperty name="Board" property="hole5Content" /></button>
     		<button type="submit" name="button" value="6" class="container hole"><jsp:getProperty name="Board" property="hole6Content" /></button>
     	</form>
-    	<div class="container kalaha"><jsp:useBean id="Kalaha1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha1Content" /></div>
-    </div>
+    <div class="container kalaha"><jsp:useBean id="Kalaha1" class="nl.sogyo.mancala.controller.dto.BoardDTO" scope="session" /><jsp:getProperty name="Board" property="kalaha1Content" /></div>
+</div>
+<div class="top-bar" style="margin-top:0px;">
+Bericht
+</div>
+
 
 </body>
 </html>

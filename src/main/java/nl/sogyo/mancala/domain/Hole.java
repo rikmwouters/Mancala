@@ -104,7 +104,7 @@ public class Hole extends Container {
 	
 	private void strike(Container currentContainer) {
 		
-		Container oppositeContainer = this.findOpposite();
+		Container oppositeContainer = ((Hole) currentContainer).findOpposite();
 		int loot = currentContainer.getContent()+oppositeContainer.getContent(); 
 		oppositeContainer.setContentToZero();
 		currentContainer.setContentToZero();

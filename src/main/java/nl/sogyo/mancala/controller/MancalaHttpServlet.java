@@ -3,7 +3,6 @@ package nl.sogyo.mancala.controller;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,18 +51,17 @@ public class MancalaHttpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 	
 private String processNewGame(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
+		Mancala mancalaGame = new Mancala();
 		String nameP1 = request.getParameter("nameP1");
 		String nameP2 = request.getParameter("nameP2");
-		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2);
+		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2, mancalaGame);
 		session.setAttribute("Players", playersDTO);
-		Mancala mancalaGame = new Mancala();
 		BoardDTO boardDTO = new BoardDTO(mancalaGame);
 	    session.setAttribute("Board", boardDTO);
 	    session.setAttribute("MancalaGame", mancalaGame);
@@ -78,11 +76,22 @@ private String processNewGame(HttpServletRequest request) {
 		Mancala mancalaGame = (Mancala)session.getAttribute("MancalaGame");
 		
 		mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
+		if(mancalaGame.determineWinner() != null) {
+			processEndGame(request, mancalaGame);
+		}
 		
 		boardDTO = new BoardDTO(mancalaGame);
 		session.setAttribute("MancalaGame", mancalaGame);
 		session.setAttribute("Board", boardDTO);
 		
+		
+		return "./Session.jsp";
+	}
+	
+	private String processEndGame(HttpServletRequest request, Mancala mancalaGame) {
+		HttpSession session = request.getSession(); 
+		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
+		String winner = playersDTO.getPlayerNameFromObject(mancalaGame.determineWinner());
 		
 		return "./Session.jsp";
 	}
