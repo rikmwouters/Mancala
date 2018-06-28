@@ -8,14 +8,19 @@ public class Mancala {
 		firstKalaha.getOwner().connectPlayers(firstKalaha);
 	}
 	
-	public void chooseHole(int position) {
+	public String chooseHole(int position) {
 		Container currentContainer = firstKalaha;
 		if(firstKalaha.getOwner().isActive() && position > 7 || firstKalaha.getOwner().getOpponent().isActive() && position < 7) {
 			currentContainer = currentContainer.stepsForward(position);
 			if(currentContainer.getContent() > 0) {
 				((Hole) currentContainer).processHoleChoice();
+			} else {
+				return "empty";
 			}
+		} else {
+			return "wrongside";
 		}
+		return "correct";
 	}
 	
 	public int[] getAllContent() {

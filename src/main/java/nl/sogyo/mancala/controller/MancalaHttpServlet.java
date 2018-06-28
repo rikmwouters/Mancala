@@ -81,8 +81,15 @@ private String processNewGame(HttpServletRequest request) {
 		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
 		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
 		
-		mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
-		messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
+		String moveStatus = mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
+		if(moveStatus.equals("correct")) {
+			messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
+		} else if(moveStatus.equals("empty")) {
+			messageDTO.pushEmptyHoleMessage();
+		} else if(moveStatus.equals("wrongside")) {
+			messageDTO.pushWrongSideMessage();
+		}
+		
 		session.setAttribute("Message", messageDTO);
 		
 		if(mancalaGame.determineWinner() != null) {
