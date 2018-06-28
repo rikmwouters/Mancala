@@ -11,12 +11,12 @@
 
 <div class="top-bar">
 	<div>
-		<jsp:useBean id="Player1" class="nl.sogyo.mancala.controller.dto.PlayersDTO" scope="session" />
-		<jsp:getProperty name="Players" property="nameP1" />
-	</div>
-	<div>
 		<jsp:useBean id="Player2" class="nl.sogyo.mancala.controller.dto.PlayersDTO" scope="session" />
 		<jsp:getProperty name="Players" property="nameP2" />
+	</div>
+	<div>
+		<jsp:useBean id="Player1" class="nl.sogyo.mancala.controller.dto.PlayersDTO" scope="session" />
+		<jsp:getProperty name="Players" property="nameP1" />
 	</div>
 </div><br>
 

@@ -67,6 +67,7 @@ private String processNewGame(HttpServletRequest request) {
 	    session.setAttribute("Board", boardDTO);
 	    session.setAttribute("MancalaGame", mancalaGame);
 	    MessageDTO messageDTO = new MessageDTO();
+	    messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
 	    session.setAttribute("Message", messageDTO);
 	    
 	    return "./Session.jsp";
