@@ -6,6 +6,7 @@ public class MessageDTO {
 	private String stalemateMessage = "It's a stalemate!";
 	private String emptyHoleMessage = "The chosen pocket is empty.";
 	private String wrongSideMessage = "The chosen pocket is not yours.";
+	private String testMessage = "TEST";
 	
 	public MessageDTO(){
 		
@@ -38,6 +39,10 @@ public class MessageDTO {
 	
 	public void pushWrongSideMessage() {
 		this.currentMessage = wrongSideMessage;
+	}
+	
+	public void pushTestMessage() {
+		this.currentMessage = testMessage;
 	}
 	
 	public void resetMessage() {

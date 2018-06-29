@@ -68,16 +68,16 @@ public class MancalaController extends HttpServlet {
 		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
 		
 		String moveStatus = mancalaGame.chooseHole(Integer.parseInt(request.getParameter("MakeMove")));
-		if(mancalaGame.determineWinner() != null) {
-			processEndGame(request, mancalaGame);
-		} else if(moveStatus.equals("correct")) {
+		if(moveStatus.equals("correct")) {
 			messageDTO.pushPlayerTurnMessage(getActivePlayerName(request));
 		} else if(moveStatus.equals("empty")) {
 			messageDTO.pushEmptyHoleMessage();
 		} else if(moveStatus.equals("wrongside")) {
 			messageDTO.pushWrongSideMessage();
 		}
-		
+		if(mancalaGame.determineWinner() != null) {
+			processEndGame(request, mancalaGame);
+		}
 		session.setAttribute("Message", messageDTO);
 		
 		BoardDTO boardDTO = new BoardDTO(mancalaGame.getAllContent());

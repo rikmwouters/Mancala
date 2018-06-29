@@ -42,9 +42,13 @@ public class Player {
 		active = !active;
 		opponent.alsoChangesActive();
 		
-		if(active){
+		if(active) {
+			checkIfGameOver(currentContainer);
+		} else {
+			currentContainer = currentContainer.stepsForward(7);
 			checkIfGameOver(currentContainer);
 		}
+		
 	}
 	
 	private void alsoChangesActive() {
