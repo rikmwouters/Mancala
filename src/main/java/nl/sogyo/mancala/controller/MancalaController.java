@@ -15,32 +15,18 @@ import nl.sogyo.mancala.controller.dto.MessageDTO;
 import nl.sogyo.mancala.controller.dto.PlayersDTO;
 import nl.sogyo.mancala.domain.Mancala;
 
-/**
- * Servlet implementation class MancalaHttpServlet
- */
-@WebServlet("/MancalaHttpServlet")
-public class MancalaHttpServlet extends HttpServlet {
+@WebServlet("/MancalaController")
+public class MancalaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    /*public MancalaHttpServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }*/
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String action = request.getParameter("action");
 		
-		String resource = "./Session.jsp";
-		if ("newNames".equalsIgnoreCase(action)) {
+		String resource = "./Mancala.jsp";
+		if ("NewGame".equalsIgnoreCase(action)) {
 			resource = this.processNewGame(request);
-		} else if (request.getParameter("button") != null) {
+		} else if ("MakeMove".equalsIgnoreCase(action)) {
 			resource = this.processMakeMove(request);
 		}
 		
@@ -48,41 +34,45 @@ public class MancalaHttpServlet extends HttpServlet {
 	    rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 	
-private String processNewGame(HttpServletRequest request) {
+	private String processNewGame(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		Mancala mancalaGame = new Mancala();
+		
+		BoardDTO boardDTO = new BoardDTO(mancalaGame.getAllContent());
+	    session.setAttribute("Board", boardDTO);
+	    session.setAttribute("MancalaGame", mancalaGame);
+		
 		String nameP1 = request.getParameter("nameP1");
 		String nameP2 = request.getParameter("nameP2");
 		PlayersDTO playersDTO = new PlayersDTO(nameP1, nameP2, mancalaGame);
 		session.setAttribute("Players", playersDTO);
-		BoardDTO boardDTO = new BoardDTO(mancalaGame);
-	    session.setAttribute("Board", boardDTO);
-	    session.setAttribute("MancalaGame", mancalaGame);
+		
+		
+	    
 	    MessageDTO messageDTO = new MessageDTO();
 	    messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
 	    session.setAttribute("Message", messageDTO);
 	    
-	    return "./Session.jsp";
+	    return "./Mancala.jsp";
 	}
 	
 	private String processMakeMove(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession(); 
-		BoardDTO boardDTO = (BoardDTO)session.getAttribute("Board");
 		Mancala mancalaGame = (Mancala)session.getAttribute("MancalaGame");
 		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
 		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
 		
-		String moveStatus = mancalaGame.chooseHole(Integer.parseInt(request.getParameter("button")));
-		if(moveStatus.equals("correct")) {
+		String moveStatus = mancalaGame.chooseHole(Integer.parseInt(request.getParameter("MakeMove")));
+		if(mancalaGame.determineWinner() != null) {
+			processEndGame(request, mancalaGame);
+		} else if(moveStatus.equals("correct")) {
 			messageDTO.pushPlayerTurnMessage(playersDTO.getActivePlayerName());
 		} else if(moveStatus.equals("empty")) {
 			messageDTO.pushEmptyHoleMessage();
@@ -92,27 +82,24 @@ private String processNewGame(HttpServletRequest request) {
 		
 		session.setAttribute("Message", messageDTO);
 		
-		if(mancalaGame.determineWinner() != null) {
-			processEndGame(request, mancalaGame);
-		}
-		
-		boardDTO = new BoardDTO(mancalaGame);
+		BoardDTO boardDTO = new BoardDTO(mancalaGame.getAllContent());
 		session.setAttribute("MancalaGame", mancalaGame);
 		session.setAttribute("Board", boardDTO);
 		
 		
-		return "./Session.jsp";
+		return "./Mancala.jsp";
 	}
 	
-	private String processEndGame(HttpServletRequest request, Mancala mancalaGame) {
+	private void processEndGame(HttpServletRequest request, Mancala mancalaGame) {
+		
 		HttpSession session = request.getSession(); 
 		PlayersDTO playersDTO = (PlayersDTO)session.getAttribute("Players");
 		String winner = playersDTO.getPlayerNameFromObject(mancalaGame.determineWinner());
+		
 		MessageDTO messageDTO = (MessageDTO)session.getAttribute("Message");
 		messageDTO.pushPlayerWinMessage(winner);
 		session.setAttribute("Message", messageDTO);
-		
-		return "./Session.jsp";
+
 	}
 	
 	

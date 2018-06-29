@@ -5,13 +5,13 @@
         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
    <servlet>
-       <servlet-name>MancalaHttpServlet</servlet-name>
-       <servlet-class>nl.sogyo.mancala.controller.MancalaHttpServlet</servlet-class>
+       <servlet-name>MancalaController</servlet-name>
+       <servlet-class>nl.sogyo.mancala.controller.MancalaController</servlet-class>
        <load-on-startup>1</load-on-startup>
    </servlet>
 
    <servlet-mapping>
-       <servlet-name>MancalaHttpServlet</servlet-name>
+       <servlet-name>MancalaController</servlet-name>
        <url-pattern>*.do</url-pattern>
    </servlet-mapping>
 

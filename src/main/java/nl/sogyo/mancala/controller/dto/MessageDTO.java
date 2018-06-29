@@ -5,7 +5,7 @@ public class MessageDTO {
 	private String currentMessage = "";
 	private String stalemateMessage = "It's a stalemate!";
 	private String emptyHoleMessage = "The chosen pocket is empty.";
-	private String wrongSideMessage = "You can only select pockets on your own side.";
+	private String wrongSideMessage = "The chosen pocket is not yours.";
 	
 	public MessageDTO(){
 		

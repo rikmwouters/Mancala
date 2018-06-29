@@ -28,7 +28,7 @@ public class Mancala {
 		int[] AllContent = new int[14];
 		for(int i = 0; i < 14; i++) {
 			AllContent[i] = currentContainer.getContent();
-			currentContainer = firstKalaha.getNextContainer();
+			currentContainer = currentContainer.getNextContainer();
 		}
 		return AllContent;
 	}
