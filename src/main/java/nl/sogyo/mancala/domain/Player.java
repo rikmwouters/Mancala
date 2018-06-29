@@ -106,16 +106,13 @@ public class Player {
 	private void compareScores(int currentPlayerScore, int opponentScore) {
 		if(currentPlayerScore > opponentScore) {
 			this.won = true;
-			System.out.println("The active player has won!");
 		}
 		else if(currentPlayerScore < opponentScore) {
 			this.won = false;
 			this.opponent.won = true;
-			System.out.println("The active player has lost!");
 		}
 		else {
 			this.won = false;
-			System.out.println("It's a stalemate!");
 		}
 	}
 }
