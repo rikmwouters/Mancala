@@ -8,10 +8,12 @@ import junit.framework.Assert;
 
 public class TestTest {
 
+	/*
 	@Test
 	public void test() {
 		Boolean test = false;
 		Assert.assertTrue(test);
 	}
+	*/
 
 }
