@@ -48,7 +48,7 @@ public class Mancala {
 			winner = firstKalaha.getOwner();
 		} else if (firstKalaha.getOwner().getOpponent().hasWon()) {
 			winner = firstKalaha.getOwner().getOpponent();
-		} else if(firstKalaha.getOwner().gameIsFinished() || firstKalaha.getOwner().getOpponent().gameIsFinished()) {
+		} else if(firstKalaha.getOwner().isGameFinished() || firstKalaha.getOwner().getOpponent().isGameFinished()) {
 			//An unknown player is given in case of a stalemate
 			winner = new Player(false, null);
 		}
