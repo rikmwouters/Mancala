@@ -1,4 +1,7 @@
-simple-test:
- stage: test
+Maven-verify:
+ script:
+  - mvn verify
+
+Maven-clean-test:
  script:
   - mvn clean test
